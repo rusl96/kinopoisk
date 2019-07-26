@@ -1,0 +1,18 @@
+.image-in-gridview {
+    width: 200px;
+}
+
+.image-in-view {
+    width: 250px;
+}
+
+.image-in-detailview {
+    height: 25px;
+}
+
+.rating {
+    background-image: url('../img/stars.png');
+}
+.rating-width {
+    width: 112px;
+}
