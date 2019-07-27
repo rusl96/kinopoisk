@@ -1,6 +1,6 @@
 <?php
 
-use frontend\assets\MyAsset;
+use frontend\assets\KinopoiskAsset;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\bootstrap\Modal;
@@ -11,7 +11,7 @@ use yii\bootstrap\Modal;
  * @var integer $level
  * @var $newComment \common\models\Comments
  */
-MyAsset::register($this);
+KinopoiskAsset::register($this);
 if ($level==0) $style = "margin-left:40px";
 else {
     $otstup = 40+50*$level;
@@ -19,7 +19,7 @@ else {
 }
 ?>
 <li style="<?= Html::encode($style);?>">
-    <i><?= Html::img($model->{$createdByMethod}->{$avatarColumnName}, ['class' => 'perfectavatar']);?></i>
+    <i><?= Html::img($model->{$createdByMethod}->{$avatarColumnName}, ['class' => 'comment-avatar']);?></i>
     <i>| <?= Html::encode($model->{$createdByMethod}->{$userNameColumn});?></i>
     <i>| <?= Yii::$app->formatter->asDatetime($model->{$createdAtColumnName});?></i>
     <i>| <?php Modal::begin([
@@ -54,10 +54,10 @@ else {
         <div class="comments-form">
 
             <?php
-            $form = ActiveForm::begin(['action' => $actionCommentPath . $model->{$articleIdColumn}]);
+            $form = ActiveForm::begin(['action' => $actionCommentPath . $viewId]);
             ?>
 
-            <?= $form->field($newCommentModel, $articleIdColumn, ['template' => '{input}'])->hiddenInput(['value' => $model->{$articleIdColumn}]) ?>
+            <?= $form->field($newCommentModel, $viewIdColumn, ['template' => '{input}'])->hiddenInput(['value' => $viewId]) ?>
 
             <?= $form->field($newCommentModel, $parentIdColumn, ['template' => '{input}'])->hiddenInput(['value' => $model->{$idColumn}]) ?>
 

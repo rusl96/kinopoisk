@@ -14,15 +14,17 @@ class CommentView extends Widget
     public $avatarColumnName;
     public $createdAtColumnName;
     public $contentColumn;
-    public $articleIdColumn;
+    public $viewId;
+    public $viewIdColumn;
     public $idColumn;
     public $parentIdColumn;
+    public $actionNewCommentPath;
     public $actionCommentPath;
     public $actionChangeCommentPath;
 
     public function run()
     {
-        return $this->render('tree', [
+        return $this->render('addCommentForm', [
             'models' => $this->models,
             'newCommentModel' => $this->newCommentModel,
             'childrenMethod' => $this->childrenMethod,
@@ -31,9 +33,11 @@ class CommentView extends Widget
             'avatarColumnName' => $this->avatarColumnName,
             'createdAtColumnName' => $this->createdAtColumnName,
             'contentColumn' => $this->contentColumn,
-            'articleIdColumn' => $this->articleIdColumn,
+            'viewId' => $this->viewId,
+            'viewIdColumn' => $this->viewIdColumn,
             'idColumn' => $this->idColumn,
             'parentIdColumn' => $this->parentIdColumn,
+            'actionNewCommentPath' => $this->actionNewCommentPath,
             'actionCommentPath' => $this->actionCommentPath,
             'actionChangeCommentPath' => $this->actionChangeCommentPath,
             'level' => 0]);
