@@ -2,7 +2,7 @@
 
 use frontend\assets\KinopoiskAsset;
 use frontend\widgets\ActiveRecordsToLink;
-use frontend\widgets\PromoView;use yii\bootstrap\Progress;
+use frontend\widgets\CommentView;use frontend\widgets\PromoView;use yii\bootstrap\Progress;
 use yii\helpers\Html;
 use yii\web\YiiAsset;
 use yii\widgets\DetailView;
@@ -85,6 +85,18 @@ KinopoiskAsset::register($this);
             'linkPart' => 'film'
         ]) ?>
     </p>
+
+    <br>
+
+    <?= CommentView::widget([
+        'models' => $comments,
+        'newModel' => $newComment,
+        'viewId' => $model->id,
+        'viewIdColumn' => 'film_id',
+        'actionNewCommentPath' => '/film/newcomment/',
+        'actionCommentPath' => '/film/commenttocomment/',
+        'actionChangeCommentPath' => '/film/changecomment/',
+    ])?>
 
 </div>
 

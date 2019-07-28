@@ -1,13 +1,13 @@
 <?php
 
-namespace common\components;
+namespace frontend\widgets;
 
 use yii\base\Widget;
 
 class CommentView extends Widget
 {
     public $models;
-    public $newCommentModel;
+    public $newModel;
     public $childrenMethod;
     public $createdByMethod;
     public $userNameColumn;
@@ -26,7 +26,7 @@ class CommentView extends Widget
     {
         return $this->render('addCommentForm', [
             'models' => $this->models,
-            'newCommentModel' => $this->newCommentModel,
+            'newModel' => $this->newModel,
             'childrenMethod' => $this->childrenMethod,
             'createdByMethod' => $this->createdByMethod,
             'userNameColumn' => $this->userNameColumn,

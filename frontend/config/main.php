@@ -6,6 +6,16 @@ $params = array_merge(
     require __DIR__ . '/params-local.php'
 );
 
+Yii::$container->set('frontend\widgets\CommentView', [
+    'childrenMethod' => 'comments',
+    'createdByMethod' => 'createdBy',
+    'userNameColumn' => 'username',
+    'avatarColumnName' => 'image_url',
+    'createdAtColumnName' => 'created_at',
+    'contentColumn' => 'content',
+    'idColumn' => 'id',
+    'parentIdColumn' => 'parent_id',]);
+
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
@@ -42,6 +52,9 @@ return [
             'rules' => [
                 '<alias:\w+>' => 'site/<alias>',
                 'film/index' => 'film/index',
+                'film/newcomment/<filmId:\d+>'=>'film/newcomment',
+                'film/changecomment/<filmId:\d+><commentId:\d+>'=>'film/changecomment',
+                'film/commenttocomment/<filmId:\d+>'=>'film/commenttocomment',
                 'film/<slug:[\w\-]+>'=>'film/view',
                 'genre/index' => 'genre/index',
                 'genre/<slug:[\w\-]+>'=>'genre/view',

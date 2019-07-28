@@ -6,7 +6,7 @@
 foreach ($models as $model) {
     echo $this->render('_comment', [
         'model' => $model,
-        'newCommentModel' => $newCommentModel,
+        'newModel' => $newModel,
         'createdByMethod' => $createdByMethod,
         'userNameColumn' => $userNameColumn,
         'avatarColumnName' => $avatarColumnName,
@@ -24,7 +24,7 @@ foreach ($models as $model) {
         $level++;
         echo $this->render('tree', [
             'models' => $children,
-            'newCommentModel' => $newCommentModel,
+            'newModel' => $newModel,
             'childrenMethod' => $childrenMethod,
             'createdByMethod' => $createdByMethod,
             'userNameColumn' => $userNameColumn,

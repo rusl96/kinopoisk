@@ -1,5 +1,4 @@
 <?php
-
 use frontend\assets\KinopoiskAsset;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -29,7 +28,7 @@ else {
             <div class="comments-form">
 
                 <?php
-                $form = ActiveForm::begin(['action' => $actionChangeCommentPath . $model->{$idColumn}]);
+                $form = ActiveForm::begin(['action' => $actionChangeCommentPath . $viewId . $model->{$idColumn}]);
                 ?>
 
                 <?= $form->field($model, $contentColumn)->textarea(['rows' => 6]) ?>
@@ -57,11 +56,11 @@ else {
             $form = ActiveForm::begin(['action' => $actionCommentPath . $viewId]);
             ?>
 
-            <?= $form->field($newCommentModel, $viewIdColumn, ['template' => '{input}'])->hiddenInput(['value' => $viewId]) ?>
+            <?= $form->field($newModel, $viewIdColumn, ['template' => '{input}'])->hiddenInput(['value' => $viewId]) ?>
 
-            <?= $form->field($newCommentModel, $parentIdColumn, ['template' => '{input}'])->hiddenInput(['value' => $model->{$idColumn}]) ?>
+            <?= $form->field($newModel, $parentIdColumn, ['template' => '{input}'])->hiddenInput(['value' => $model->{$idColumn}]) ?>
 
-            <?= $form->field($newCommentModel, $contentColumn)->textarea(['rows' => 6]) ?>
+            <?= $form->field($newModel, $contentColumn)->textarea(['rows' => 6]) ?>
 
             <div class="form-group">
                 <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

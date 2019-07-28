@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(['action' => $actionNewCommentPath . $viewId]); ?>
     <div class="row">
     <div class="col-lg-6">
-    <?= $form->field($newCommentModel, $contentColumn)->textarea(['rows' => 5])->label("<h4>Add new comment:</h4>"); ?>
+    <?= $form->field($newModel, $contentColumn)->textarea(['rows' => 5])->label("<h4>Add new comment:</h4>"); ?>
     </div>
     </div>
     <div class="form-group">
@@ -29,9 +29,9 @@ use yii\widgets\ActiveForm;
 </div>
 <?php
     if ($models) {
-        $this->render('tree', [
+        echo $this->render('tree', [
             'models' => $models,
-            'newCommentModel' => $newCommentModel,
+            'newModel' => $newModel,
             'childrenMethod' => $childrenMethod,
             'createdByMethod' => $createdByMethod,
             'userNameColumn' => $userNameColumn,
@@ -47,4 +47,3 @@ use yii\widgets\ActiveForm;
             'level' => 0]);
     }
     ?>
-}
