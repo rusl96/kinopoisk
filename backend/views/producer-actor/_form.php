@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'birthday')->textInput() ?>
 
+    <?= $form->field($model, 'birthplace')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'height')->textInput() ?>
 
     <?= $form->field($model, 'image_url')->textarea(['rows' => 6]) ?>

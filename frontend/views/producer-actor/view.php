@@ -1,42 +1,107 @@
 <?php
 
+use frontend\assets\KinopoiskAsset;
+use frontend\widgets\ActiveRecordsToLink;
+use frontend\widgets\ActiveRecordToIcon;
+use frontend\widgets\CommentView;use frontend\widgets\PromoView;
+use frontend\widgets\YearsOld;
+use yii\bootstrap\Progress;
 use yii\helpers\Html;
+use yii\web\YiiAsset;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model common\entities\ProducerActor */
+/* @var $filmsLikeThis array */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Producer Actors', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Producer-actors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+YiiAsset::register($this);
+KinopoiskAsset::register($this);
 ?>
-<div class="producer-actor-view">
+<div class="film-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 align="center"><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
+    <div class="row">
+
+        <div class="col-6 col-md-3">
+
+        <?= Html::img($model->image_url, ['class' => 'image-in-view']) ?>
+
+        </div>
+
+        <div class="col-12 col-md-8">
+        <?= DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                [
+                    'attribute' => 'birthday',
+                    'value' => $model->birthday . ' (' . YearsOld::widget(['birthday' => $model->birthday]) . ')',
+                ],
+                'birthplace',
+                'height',
+                [
+                    'label' => 'Genres',
+                    'format' => 'raw',
+                    'value' => ActiveRecordsToLink::widget([
+                        'objects' => $genres,
+                        'classname' => 'Genre',
+                        'linkPart' => 'genre'
+                    ])
+                ],
+                [
+                    'label' => 'Films',
+                    'format' => 'raw',
+                    'value' => ActiveRecordsToLink::widget([
+                        'objects' => $films,
+                        'classname' => 'Film',
+                        'linkPart' => 'film'
+                    ])
+                ],
+                [
+                    'label' => 'Amount of films',
+                    'value' => count($films),
+                    'format' => 'raw',
+                ],
+                [
+                    'label' => 'Awards',
+                    'format' => 'raw',
+                    'value' => ActiveRecordToIcon::widget([
+                        'objects' => $model->awards,
+                        'classname' => 'Award',
+                    ])
+                ],
+
             ],
+        ]) ?>
+        </div>
+
+    </div>
+
+    <br>
+
+    <h2 align="center">Actors films:</h2>
+    <p align="center">
+        <?= PromoView::widget([
+            'objects' => $films,
+            'linkPart' => 'film'
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'name',
-            'birthday',
-            'height',
-            'image_url:ntext',
-            'function',
-            'slug',
-        ],
-    ]) ?>
+    <br>
+
+    <?= CommentView::widget([
+        'models' => $comments,
+        'newModel' => $newComment,
+        'viewId' => $model->id,
+        'viewIdColumn' => 'film_id',
+        'actionNewCommentPath' => '/film/newcomment/',
+        'actionCommentPath' => '/film/commenttocomment/',
+        'actionChangeCommentPath' => '/film/changecomment/',
+    ])?>
 
 </div>
+
+

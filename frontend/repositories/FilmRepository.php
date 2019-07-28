@@ -17,7 +17,7 @@ class FilmRepository extends IRepository
 
     public function getColumnsById(array $columns, array $filmId): array
     {
-        return $this->getColumnsFromBy($columns, ['id' => $filmId], 'film');
+        return $this->getColumnsBy($columns, ['id' => $filmId]);
     }
 
     public function getSlugById(int $filmId): array

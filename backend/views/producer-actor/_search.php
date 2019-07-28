@@ -21,9 +21,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'birthday') ?>
 
+    <?= $form->field($model, 'birthplace') ?>
+
     <?= $form->field($model, 'height') ?>
 
-    <?= $form->field($model, 'image_url') ?>
+    <?php // echo $form->field($model, 'image_url') ?>
 
     <?php // echo $form->field($model, 'function') ?>
 

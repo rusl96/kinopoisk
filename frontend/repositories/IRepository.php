@@ -34,6 +34,11 @@ class IRepository
         return $this->getBy(['id' => $id]);
     }
 
+    public function getByIds(array $ids)
+    {
+        return $this->getSome(['id' => $ids]);
+    }
+
     /**
      * @param $slug
      * @return ActiveRecord

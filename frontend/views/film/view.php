@@ -41,8 +41,8 @@ KinopoiskAsset::register($this);
                     'format' => 'raw',
                     'value' => ActiveRecordsToLink::widget([
                         'objects' => $model->producer,
-                        'classname' => 'Producer',
-                        'linkPart' => 'producer'
+                        'classname' => 'ProducerActor',
+                        'linkPart' => 'producer-actor'
                     ])
                 ],
                 [
@@ -78,7 +78,7 @@ KinopoiskAsset::register($this);
 
     <br>
 
-    <h2 align="center">Похожие фильмы:</h2>
+    <h2 align="center">Films like this:</h2>
     <p align="center">
         <?= PromoView::widget([
             'objects' => $filmsLikeThis,

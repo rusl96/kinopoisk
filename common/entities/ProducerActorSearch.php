@@ -18,7 +18,7 @@ class ProducerActorSearch extends ProducerActor
     {
         return [
             [['id', 'height'], 'integer'],
-            [['name', 'birthday', 'image_url', 'function', 'slug'], 'safe'],
+            [['name', 'birthday', 'birthplace', 'image_url', 'function', 'slug'], 'safe'],
         ];
     }
 
@@ -64,6 +64,7 @@ class ProducerActorSearch extends ProducerActor
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'birthplace', $this->birthplace])
             ->andFilterWhere(['like', 'image_url', $this->image_url])
             ->andFilterWhere(['like', 'function', $this->function])
             ->andFilterWhere(['like', 'slug', $this->slug]);

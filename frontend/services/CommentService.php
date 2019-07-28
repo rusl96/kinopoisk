@@ -13,11 +13,21 @@ class CommentService
         $this->commentRepository = $commentRepository;
     }
 
-    public function newCommentWithFilmId($filmId)
+    public function newCommentWithAttribute(string $columnName, $value)
     {
         $comment = new Comment();
-        $comment->film_id = $filmId;
+        $comment->{$columnName} = $value;
         return $comment;
+    }
+
+    public function newCommentWithFilmId($filmId)
+    {
+        return $this->newCommentWithAttribute('film_id', $filmId);
+    }
+
+    public function newCommentWithProducerActorId($producerActorId)
+    {
+        return $this->newCommentWithAttribute('producer_actor_id', $producerActorId);
     }
 
 

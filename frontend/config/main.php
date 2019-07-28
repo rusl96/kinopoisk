@@ -16,6 +16,11 @@ Yii::$container->set('frontend\widgets\CommentView', [
     'idColumn' => 'id',
     'parentIdColumn' => 'parent_id',]);
 
+Yii::$container->set('frontend\widgets\PromoView', [
+    'classname' => 'Film',
+    'amountOfPromos' => 5,
+    ]);
+
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
@@ -56,6 +61,11 @@ return [
                 'film/changecomment/<filmId:\d+><commentId:\d+>'=>'film/changecomment',
                 'film/commenttocomment/<filmId:\d+>'=>'film/commenttocomment',
                 'film/<slug:[\w\-]+>'=>'film/view',
+                'producer-actor/index' => 'producer-actor/index',
+                'producer-actor/newcomment/<filmId:\d+>'=>'producer-actor/newcomment',
+                'producer-actor/changecomment/<filmId:\d+><commentId:\d+>'=>'producer-actor/changecomment',
+                'producer-actor/commenttocomment/<filmId:\d+>'=>'producer-actor/commenttocomment',
+                'producer-actor/<slug:[\w\-]+>'=>'producer-actor/view',
                 'genre/index' => 'genre/index',
                 'genre/<slug:[\w\-]+>'=>'genre/view',
             ],

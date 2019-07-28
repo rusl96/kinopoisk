@@ -13,9 +13,16 @@ class FilmGenreService
         $this->filmGenreRepository = $filmGenreRepository;
     }
 
-    public function getGenreIdAsConditionToQueryByFilmId($filmId)
+    public function getGenreIdAsConditionToQueryByFilmId($filmId): array
     {
         return ArrayHelper::getColumn($this->filmGenreRepository->getGenreIdsByFilmId($filmId), 'genre_id');
+    }
+
+    public function getGenreIdAsConditionToQueryByFilmIds(array $filmIds): array
+    {
+        $genreIds = array_count_values($this->getGenreIdAsConditionToQueryByFilmId($filmIds));
+        $genreIds = array_keys($genreIds);
+        return $genreIds;
     }
 
     public function getFilmsIdLikeThis($filmId)

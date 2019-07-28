@@ -21,5 +21,15 @@ class CommentRepository extends IRepository
         return $result;
     }
 
+    public function getAllRootCommentsWithProducerActorId($producerActorId)
+    {
+        try {
+            $result = $this->getSome(['parent_id' => NULL, 'producer_actor_id' => $producerActorId]);
+        } catch (NotFoundHttpException $e) {
+            $result = NULL;
+        }
+        return $result;
+    }
+
 
 }

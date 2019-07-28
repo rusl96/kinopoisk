@@ -11,6 +11,7 @@ use yii\behaviors\SluggableBehavior;
  * @property int $id
  * @property string $name
  * @property string $birthday
+ * @property string $birthplace
  * @property int $height
  * @property string $image_url
  * @property string $function
@@ -51,6 +52,7 @@ class ProducerActor extends \yii\db\ActiveRecord
     {
         return [
             [['birthday'], 'safe'],
+            [['birthplace'], 'string'],
             [['height'], 'integer'],
             [['image_url'], 'string'],
             [['name', 'function', 'slug'], 'string', 'max' => 255],
@@ -66,6 +68,7 @@ class ProducerActor extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'birthday' => 'Birthday',
+            'birthplace' => 'Birthplace',
             'height' => 'Height',
             'image_url' => 'Image Url',
             'function' => 'Function',

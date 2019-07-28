@@ -16,6 +16,7 @@ class m190724_172345_create_producer_actor_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(),
             'birthday' => $this->date(),
+            'birthplace' => $this->string(),
             'height' => $this->smallInteger(),
             'image_url' => $this->text(),
             'function' => $this->string(),

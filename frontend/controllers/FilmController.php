@@ -70,7 +70,7 @@ class FilmController extends Controller
         $film = $this->filmService->filmRepository->getBySlug($slug);
         /* @var $film Film */
         $filmsIdLikeThis = $this->filmGenreService->getFilmsIdLikeThis($film->id);
-        $filmsLikeThis = $this->filmService->filmRepository->getPromoOfFilmsById($filmsIdLikeThis);
+        $filmsLikeThis = $this->filmService->filmRepository->getByIds($filmsIdLikeThis);
         return $this->render('view', [
             'model' => $film,
             'filmsLikeThis' => $filmsLikeThis,
