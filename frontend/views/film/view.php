@@ -27,6 +27,8 @@ KinopoiskAsset::register($this);
         <?= Html::img($model->image_url, ['class' => 'image-in-view']) ?>
             <br>
             <?= Html::a('Watch trailer', $model->video_url, ['class' => 'btn btn-info image-in-view']) ?>
+            <br>
+            <?= Html::a('Add to favorites', '/film/addtofavorites/' . $model->id, ['class' => 'btn btn-primary image-in-view']) ?>
         </div>
 
         <div class="col-12 col-md-8">

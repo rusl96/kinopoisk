@@ -6,6 +6,7 @@ use common\entities\Comment;
 use common\entities\Film;
 use frontend\services\CommentService;
 use frontend\services\FilmGenreService;
+use frontend\services\UserFilmService;
 use Yii;
 use frontend\services\FilmService;
 use common\entities\FilmSearch;
@@ -21,12 +22,14 @@ class FilmController extends Controller
     private $filmService;
     private $filmGenreService;
     private $commentService;
+    private $userFilmService;
 
-    public function __construct($id, $module, FilmService $filmService, FilmGenreService $filmGenreService, CommentService $commentService, $config = [])
+    public function __construct($id, $module, FilmService $filmService, FilmGenreService $filmGenreService, CommentService $commentService, UserFilmService $userFilmService, $config = [])
     {
         $this->filmService = $filmService;
         $this->filmGenreService = $filmGenreService;
         $this->commentService = $commentService;
+        $this->userFilmService = $userFilmService;
         parent::__construct($id, $module, $config);
     }
 
@@ -125,6 +128,19 @@ class FilmController extends Controller
             Yii::$app->session->setFlash('success', "Комментарий изменен");
         }
         else Yii::$app->session->setFlash('danger', "Недопустимый комментарий");
+        return $this->redirect(['view', 'slug' => $this->filmService->getSlugById($filmId)]);
+    }
+
+    /**
+     * Adds current film to favorites
+     * @param integer $filmId
+     * @return mixed
+     */
+    public function actionAddtofavorites($filmId)
+    {
+        if ($userId = Yii::$app->user->id) {
+            $this->userFilmService->addNewUserFilm($userId, $filmId);
+        } else Yii::$app->session->setFlash('danger', "Вы незарегистрированный пользоваетль!");
         return $this->redirect(['view', 'slug' => $this->filmService->getSlugById($filmId)]);
     }
 

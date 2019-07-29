@@ -50,8 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $links;
                 },
             ],
-//            ['label'=>'Genres',
-//                'value'=>'datetime'],
         ],
     ]); ?>
 

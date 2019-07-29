@@ -57,6 +57,7 @@ return [
             'rules' => [
                 '<alias:\w+>' => 'site/<alias>',
                 'film/index' => 'film/index',
+                'film/addtofavorites/<filmId:\d+>'=>'film/addtofavorites',
                 'film/newcomment/<filmId:\d+>'=>'film/newcomment',
                 'film/changecomment/<filmId:\d+>-<commentId:\d+>'=>'film/changecomment',
                 'film/commenttocomment/<filmId:\d+>'=>'film/commenttocomment',

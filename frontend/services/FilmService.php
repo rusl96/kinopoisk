@@ -18,7 +18,7 @@ class FilmService
         return ArrayHelper::getValue($this->filmRepository->getSlugById($filmId), '0.slug');
     }
 
-    public function getIdAsConditionToQueryByProducerId($producerId)
+    public function getFilmIdAsConditionToQueryByProducerId($producerId)
     {
         return ArrayHelper::getColumn($this->filmRepository->getIdsByProducerId($producerId), 'id');
     }
