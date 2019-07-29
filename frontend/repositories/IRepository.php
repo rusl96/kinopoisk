@@ -62,6 +62,6 @@ class IRepository
     }
     protected function makeQueryBy(array $condition)
     {
-        return $this->type::find()->where($condition);
+        return $this->type->find()->where($condition);
     }
 }

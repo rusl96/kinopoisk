@@ -18,11 +18,10 @@ class UserService
         $this->userFilmService = $userFilmService;
 
     }
-/** todo Разберись с query почему не работает метод из IPepository */
+
     public function createFavoriteFilmDataProviderByUserId($userId)
     {
         $filmIds = $this->userFilmService->getFilmIdAsConditionToQueryByUserId($userId);
-        $query = $this->filmService->filmRepository->makeQueryByIds($filmIds);
         $query = Film::find()->where(['id' => $filmIds]);
         return new ActiveDataProvider(['query' => $query]);
     }

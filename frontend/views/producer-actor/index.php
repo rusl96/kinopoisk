@@ -26,13 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            [
+                'label' => 'Face',
+                'attribute' => 'image_url',
+                'format' => ['image',['class'=>'image-in-gridview']],
+                'headerOptions' => ['class'=>'image-in-gridview'],
+                'filter' => false,
+            ],
             'name',
             'birthday',
             'height',
             'image_url:ntext',
-            //'function',
-            //'slug',
+            'function',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

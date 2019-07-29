@@ -40,8 +40,4 @@ class FilmRepository extends IRepository
         return $this->getColumnsById(['name', 'slug', 'image_url'], $film_id);
     }
 
-    public function makeQueryByIds(array $ids): string
-    {
-        return $this->makeQueryBy(['id' => $ids]);
-    }
 }
