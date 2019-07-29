@@ -20,6 +20,16 @@ class FilmRepository extends IRepository
         return $this->getColumnsBy($columns, ['id' => $filmId]);
     }
 
+    public function getColumnsByProducerId(array $columns, int $producerId): array
+    {
+        return $this->getColumnsBy($columns, ['producer_id' => $producerId]);
+    }
+
+    public function getIdsByProducerId(int $producerId): array
+    {
+        return $this->getColumnsByProducerId(['id'], $producerId);
+    }
+
     public function getSlugById(int $filmId): array
     {
         return $this->getColumnsById(['slug'], [$filmId]);

@@ -78,16 +78,12 @@ class ProducerActorController extends Controller
     {
         $producerActor = $this->producerActorService->producerActorRepository->getBySlug($slug);
         /** @var $producerActor ProducerActor */
-        if  ($producerActor->function == 'actor') {
-            $filmIds = $this->filmProducerActorService->getFilmIdAsConditionToQueryByProducerActorId($producerActor->id);
-            $genreIds = $this->filmGenreService->getGenreIdAsConditionToQueryByFilmIds($filmIds);
-            $genres = $this->genreService->genreRepository->getByIds($genreIds);
-            $films = $this->filmService->filmRepository->getByIds($filmIds);
-        }
+        $filmIds = $this->producerActorService->getFilmIdsAsConditionToQueryByProducerActorId($producerActor);
+        $genreIds = $this->filmGenreService->getGenreIdAsConditionToQueryByFilmIds($filmIds);
         return $this->render('view', [
             'model' => $producerActor,
-            'genres' => $genres,
-            'films' => $films,
+            'genres' => $this->genreService->genreRepository->getByIds($genreIds),
+            'films' => $this->filmService->filmRepository->getByIds($filmIds),
             'newComment' => new Comment(),
             'comments' => $this->commentService->commentRepository->getAllRootCommentsWithProducerActorId($producerActor->id),
         ]);

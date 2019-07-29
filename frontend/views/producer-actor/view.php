@@ -96,10 +96,10 @@ KinopoiskAsset::register($this);
         'models' => $comments,
         'newModel' => $newComment,
         'viewId' => $model->id,
-        'viewIdColumn' => 'film_id',
-        'actionNewCommentPath' => '/film/newcomment/',
-        'actionCommentPath' => '/film/commenttocomment/',
-        'actionChangeCommentPath' => '/film/changecomment/',
+        'viewIdColumn' => 'producer_actor_id',
+        'actionNewCommentPath' => '/producer-actor/newcomment/',
+        'actionCommentPath' => '/producer-actor/commenttocomment/',
+        'actionChangeCommentPath' => '/producer-actor/changecomment/',
     ])?>
 
 </div>

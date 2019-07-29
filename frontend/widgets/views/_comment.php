@@ -28,7 +28,7 @@ else {
             <div class="comments-form">
 
                 <?php
-                $form = ActiveForm::begin(['action' => $actionChangeCommentPath . $viewId . $model->{$idColumn}]);
+                $form = ActiveForm::begin(['action' => $actionChangeCommentPath . $viewId . '-' . $model->{$idColumn}]);
                 ?>
 
                 <?= $form->field($model, $contentColumn)->textarea(['rows' => 6]) ?>

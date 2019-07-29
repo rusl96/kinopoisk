@@ -27,6 +27,9 @@ use yii\behaviors\SluggableBehavior;
 class ProducerActor extends \yii\db\ActiveRecord
 {
 
+    public const FUNCTION_ACTOR = 'actor';
+    public const FUNCTION_PRODUCER = 'producer';
+
     public function behaviors()
     {
         return [
