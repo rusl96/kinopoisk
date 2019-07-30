@@ -24,7 +24,13 @@ class PromoView extends Widget
             ],
         ]);
         ArrayHelper::multisort($data, ['global_rating', 'local_rating'], SORT_DESC);
-        for ($i = 0; $i < $this->amountOfPromos; $i++) {
+        $count = count($data);
+        if ($count < $this->amountOfPromos) {
+            $amount = $count;
+        } else {
+            $amount = $this->amountOfPromos;
+        }
+        for ($i = 0; $i < $amount; $i++) {
                 $result[] = "<a href='/{$this->linkPart}/{$data[$i]['slug']}'><img src='{$data[$i]['image_url']}' height='300' alt='{$data[$i]['name']}'></a>";
             }
         return implode(' ', $result);
