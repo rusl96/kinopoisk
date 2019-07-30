@@ -6,9 +6,7 @@ use yii\bootstrap\Modal;
 
 /**
  * @var $this yii\web\View
- * @var $comment \common\models\Comments
  * @var integer $level
- * @var $newComment \common\models\Comments
  */
 KinopoiskAsset::register($this);
 if ($level==0) $style = "margin-left:40px";
