@@ -2,13 +2,15 @@
 
 return [
     [
-        'username' => 'bayer.hudson',
-        'auth_key' => 'HP187Mvq7Mmm3CTU80dLkGmni_FUH_lR',
-        //password_0
-        'password_hash' => '$2y$13$EjaPFBnZOQsHdGuHI.xvhuDp1fHpo8hKRSk6yshqa9c5EG8s3C3lO',
-        'password_reset_token' => 'ExzkCOaYc1L8IOBs4wdTGGbgNiG3Wz1I_1402312317',
+        'username' => 'user',
+        'auth_key' => 'arOYYERFTjTWswrdmu7sMpZhUMMmuGMo',
+        'password_hash' => '$2y$13$eBX023YFhiYo/15z5trYp.aEfBJ/7XwdjzYmTKagzEBUpdSRIctnG',
+        'email' => 'user@kinopoisk.com',
+        'status' => '10',
         'created_at' => '1402312317',
         'updated_at' => '1402312317',
-        'email' => 'nicole.paucek@schultz.info',
+        'verification_token' => 'OjXMgMHF1vxKBIqXWtPFCpHKveu54z8W_1564301759',
+        'function' => 'user',
+        'image_url' => 'https://altay4x4.ru/files/avatars/picture-7114.png',
     ],
 ];

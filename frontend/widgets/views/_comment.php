@@ -16,10 +16,17 @@ else {
     $otstup = 40+50*$level;
     $style = "margin-left:" . $otstup . "px";
 }
+if ($model->created_by ==  NULL) {
+    $imageUrl = 'https://ziser.ru/templates/ziser_2017/dleimages/noavatar.png';
+    $authorName = 'Guest';
+} else {
+    $imageUrl = $model->{$createdByMethod}->{$avatarColumnName};
+    $authorName = $model->{$createdByMethod}->{$userNameColumn};
+}
 ?>
 <li style="<?= Html::encode($style);?>">
-    <i><?= Html::img($model->{$createdByMethod}->{$avatarColumnName}, ['class' => 'comment-avatar']);?></i>
-    <i>| <?= Html::encode($model->{$createdByMethod}->{$userNameColumn});?></i>
+    <i><?= Html::img($imageUrl, ['class' => 'comment-avatar']);?></i>
+    <i>| <?= Html::encode($authorName);?></i>
     <i>| <?= Yii::$app->formatter->asDatetime($model->{$createdAtColumnName});?></i>
     <i>| <?php Modal::begin([
                 'toggleButton' => ['label' => 'Редактировать', 'class' => 'btn btn-link btn-xs'],

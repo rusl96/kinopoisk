@@ -1,5 +1,6 @@
 <?php
 
+use frontend\assets\KinopoiskAsset;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -9,20 +10,17 @@ use yii\grid\GridView;
 
 $this->title = 'Producer Actors';
 $this->params['breadcrumbs'][] = $this->title;
+KinopoiskAsset::register($this);
 ?>
 <div class="producer-actor-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Producer Actor', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -33,13 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['class'=>'image-in-gridview'],
                 'filter' => false,
             ],
-            'name',
+            [
+                'attribute' => 'name',
+                'value' => function($data) {
+                    return "<a href='/producer-actor/$data->slug'> $data->name</a>";
+                },
+                'format' => 'raw'
+            ],
             'birthday',
             'height',
-            'image_url:ntext',
             'function',
-
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
